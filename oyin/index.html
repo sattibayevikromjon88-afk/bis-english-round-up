@@ -83,6 +83,7 @@ const FB_CFG = {
   appId: "1:444448196599:web:6c680fd5e0401c0a2010f2"
 };
 const FB_VER = "10.12.2";
+function withTimeout(p, ms){ return Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms||15000))]); }
 function isFake(){ try{ return !!(window.FAKE_DB || (window.parent && window.parent.FAKE_DB)); }catch(e){ return !!window.FAKE_DB; } }
 async function openDB(){
   if(isFake()) return fakeDB();
@@ -198,14 +199,16 @@ async function createGame(){
   Q=makeQuestions(pool);
   if(Q.length<5){ viewSetup("Savol tuzish uchun so‘z yetarli emas. Ko‘proq unit tanlang."); return; }
   try{
-    if(!db){ db=await openDB(); db.onConn(c=>{document.getElementById("conn").textContent=c?"● ulangan":"○ ulanish uzildi";}); }
-    for(let k=0;k<10;k++){ const c=String(100000+Math.floor(Math.random()*900000)); const ex=await db.get("games/"+c+"/host"); if(!ex){ code=c; break; } }
-    if(!code) throw new Error("code");
+    if(!db){ db=await withTimeout(openDB()); db.onConn(c=>{document.getElementById("conn").textContent=c?"● ulangan":"○ ulanish uzildi";}); }
+    let nc=null;
+    for(let k=0;k<10;k++){ const c=String(100000+Math.floor(Math.random()*900000)); const ex=await withTimeout(db.get("games/"+c+"/host")); if(!ex){ nc=c; break; } }
+    if(!nc) throw new Error("code");
+    code=nc;
     const units=Object.entries(G.sel).flatMap(([bc,s])=>[...s].map(i=>BOOKS.find(x=>x.code===bc).t+" "+BOOKS.find(x=>x.code===bc).units[i].u));
-    await db.set("games/"+code,{host:db.uid,created:db.TS,info:{n:Q.length,dur:DUR,units:units.slice(0,40)},state:{phase:"lobby",qi:-1,n:Q.length}});
+    await withTimeout(db.set("games/"+code,{host:db.uid,created:db.TS,info:{n:Q.length,dur:DUR,units:units.slice(0,40)},state:{phase:"lobby",qi:-1,n:Q.length}}));
     try{ sessionStorage.setItem("bis_game",JSON.stringify({code,Q})); }catch(e){}
     listen(); viewLobby();
-  }catch(e){ console.error(e); code=null; viewSetup("Serverga ulanib bo‘lmadi yoki ruxsat berilmadi. Internetni tekshiring. ("+(e&&e.code||e&&e.message||e)+")"); }
+  }catch(e){ console.error(e); code=null; const m=String(e&&e.code||e&&e.message||e); viewSetup(m==="timeout"?"O‘yin serveriga 15 soniyada ulanib bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.":/permission|PERMISSION/i.test(m)?"O‘yin serveri ruxsat bermadi: Firebase xavfsizlik qoidalari qo‘yilmagan bo‘lishi mumkin.":"Serverga ulanib bo‘lmadi. Internetni tekshiring. ("+m+")"); }
 }
 function listen(){
   unsub.forEach(f=>{try{f()}catch(e){}}); unsub=[];
