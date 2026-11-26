@@ -200,12 +200,13 @@ async function createGame(){
   if(Q.length<5){ viewSetup("Savol tuzish uchun so‘z yetarli emas. Ko‘proq unit tanlang."); return; }
   try{
     if(!db){ db=await withTimeout(openDB()); db.onConn(c=>{document.getElementById("conn").textContent=c?"● ulangan":"○ ulanish uzildi";}); }
+    try{ const prev=JSON.parse(sessionStorage.getItem("bis_game")||"null"); if(prev&&prev.code){ const ps=await withTimeout(db.get("games/"+prev.code+"/state"),5000); if(ps&&ps.phase!=="end") await withTimeout(db.update("games/"+prev.code+"/state",{phase:"end",ts:db.now()}),5000); } }catch(e){}
     let nc=null;
     for(let k=0;k<10;k++){ const c=String(100000+Math.floor(Math.random()*900000)); const ex=await withTimeout(db.get("games/"+c+"/host")); if(!ex){ nc=c; break; } }
     if(!nc) throw new Error("code");
     code=nc;
     const units=Object.entries(G.sel).flatMap(([bc,s])=>[...s].map(i=>BOOKS.find(x=>x.code===bc).t+" "+BOOKS.find(x=>x.code===bc).units[i].u));
-    await withTimeout(db.set("games/"+code,{host:db.uid,created:db.TS,info:{n:Q.length,dur:DUR,units:units.slice(0,40)},state:{phase:"lobby",qi:-1,n:Q.length}}));
+    await withTimeout(db.set("games/"+code,{host:db.uid,created:db.TS,info:{n:Q.length,dur:DUR,units:units.slice(0,40)},state:{phase:"lobby",qi:-1,n:Q.length,ts:db.now()}}));
     try{ sessionStorage.setItem("bis_game",JSON.stringify({code,Q})); }catch(e){}
     listen(); viewLobby();
   }catch(e){ console.error(e); code=null; const m=String(e&&e.code||e&&e.message||e); viewSetup(m==="timeout"?"O‘yin serveriga 15 soniyada ulanib bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.":/permission|PERMISSION/i.test(m)?"O‘yin serveri ruxsat bermadi: Firebase xavfsizlik qoidalari qo‘yilmagan bo‘lishi mumkin.":"Serverga ulanib bo‘lmadi. Internetni tekshiring. ("+m+")"); }
@@ -228,16 +229,16 @@ function viewLobby(){
    <p class="mu">${Q.length} ta savol · har biriga ${DUR} soniya · tez va to‘g‘ri javobga 500–1000 ball, ketma-ket to‘g‘ri javoblarga qo‘shimcha ball.</p>
    <button class="btn gh" id="cancel">Bekor qilish</button>`;
   document.getElementById("go").onclick=()=>startQ(0);
-  document.getElementById("cancel").onclick=async()=>{ if(!confirmBox("O‘yin bekor qilinsinmi?")) return; await db.update("games/"+code+"/state",{phase:"end",cancelled:true}); resetAll(); };
+  document.getElementById("cancel").onclick=async()=>{ if(!confirmBox("O‘yin bekor qilinsinmi?")) return; await db.update("games/"+code+"/state",{phase:"end",cancelled:true,ts:db.now()}); resetAll(); };
 }
 function confirmBox(t){ try{ return window.confirm(t); }catch(e){ return true; } }
-function resetAll(){ unsub.forEach(f=>{try{f()}catch(e){}}); unsub=[]; code=null; Q=[]; players={}; scores={}; st=null; try{sessionStorage.removeItem("bis_game")}catch(e){} viewSetup(); }
+function resetAll(){ if(code&&db&&st&&st.phase!=="end"){ try{ db.update("games/"+code+"/state",{phase:"end",ts:db.now()}); }catch(e){} } unsub.forEach(f=>{try{f()}catch(e){}}); unsub=[]; code=null; Q=[]; players={}; scores={}; st=null; try{sessionStorage.removeItem("bis_game")}catch(e){} viewSetup(); }
 /* ---------- 3. savol ---------- */
 let qi=-1, qStart=0, revealed=false;
 async function startQ(i){
   qi=i; revealed=false; answers={};
   const q=Q[i]; qStart=db.now();
-  await db.update("games/"+code+"/state",{phase:"q",qi:i,n:Q.length,q:{type:q.type,prompt:q.prompt,sub:q.sub,opts:q.opts,say:q.say||null},qStart:qStart,dur:DUR,correct:null,counts:null});
+  await db.update("games/"+code+"/state",{phase:"q",ts:db.now(),qi:i,n:Q.length,q:{type:q.type,prompt:q.prompt,sub:q.sub,opts:q.opts,say:q.say||null},qStart:qStart,dur:DUR,correct:null,counts:null});
   if(unsub.ans) unsub.ans();
   unsub.ans=db.on("games/"+code+"/answers/"+i,v=>{answers=v||{}; updCount();});
   viewQ(); if(q.say&&q.type==="lis") setTimeout(()=>speak(q.say),400);
@@ -274,7 +275,7 @@ async function reveal(){
   });
   scores=upd;
   await db.set("games/"+code+"/scores",upd);
-  await db.update("games/"+code+"/state",{phase:"reveal",correct:q.c,counts:counts});
+  await db.update("games/"+code+"/state",{phase:"reveal",ts:db.now(),correct:q.c,counts:counts});
   viewReveal(counts);
 }
 function ranking(){ return Object.keys(players).map(uid=>({uid,name:players[uid].name,s:(scores[uid]&&scores[uid].s)||0})).sort((a,b)=>b.s-a.s); }
@@ -290,7 +291,7 @@ function viewReveal(counts){
 }
 /* ---------- 4. yakun ---------- */
 async function finish(){
-  await db.update("games/"+code+"/state",{phase:"end"});
+  await db.update("games/"+code+"/state",{phase:"end",ts:db.now()});
   const r=ranking(); const p=[r[1],r[0],r[2]];
   const text="BIS English — Jonli o‘yin ("+new Date().toLocaleString("uz-UZ")+")\n"+r.map((x,i)=>(i+1)+". "+x.name+" — "+x.s).join("\n");
   app.innerHTML=`<h1 style="text-align:center">Natijalar</h1>
