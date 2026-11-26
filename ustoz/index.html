@@ -99,6 +99,7 @@ h3{font-size:15px;margin:0 0 10px}
 /* Round-Up serveri (Apps Script) manzili — Grammarway serveridan alohida */
 const SERVER_URL = "https://script.google.com/macros/s/AKfycbx5y3bOTqaNwRzEPcNdilnkXpf5zHOZa02mA9-_voWQGwUgsUZB_bOkk3wCntUKwQ4i/exec";
 const LOGO = "data:image/jpeg;base64,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";
+const SITE_URL = "https://sattibayevikromjon88-afk.github.io/bis-english-round-up/";
 const BOOKS = [
   {code:"S", app:"Round-Up Starter · Lug‘at", t:"Round-Up Starter", units:16},
   {code:"R1", app:"Round-Up 1 · Lug‘at", t:"Round-Up 1", units:6},
@@ -111,7 +112,7 @@ const app = document.getElementById("app"), top = document.getElementById("topba
 const esc = s => String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const DAY = 86400000;
 let pass = ""; try{ pass = sessionStorage.getItem("bis_teacher")||""; }catch(e){}
-let D = null, tab = "students", sel = null, sortKey = "last", sortDir = -1, q = "", feedFilter = "all";
+let D = null, tab = "students", sel = null, sortKey = "last", sortDir = -1, q = "", feedFilter = "all", tf = "all";
 
 function fmtDate(t){ if(!t) return "—"; const d=new Date(t); const p=n=>String(n).padStart(2,"0"); return p(d.getDate())+"."+p(d.getMonth()+1)+"."+d.getFullYear()+" "+p(d.getHours())+":"+p(d.getMinutes()); }
 function ago(t){ if(!t) return "hech qachon"; const m=Math.floor((Date.now()-t)/60000); if(m<1) return "hozirgina"; if(m<60) return m+" daqiqa oldin"; const h=Math.floor(m/60); if(h<24) return h+" soat oldin"; const d=Math.floor(h/24); return d+" kun oldin"; }
@@ -123,17 +124,22 @@ function section(r){
   return {kind:"other"};
 }
 const isPass = r => String(r.passed).toLowerCase()==="ha" || String(r.passed)==="true";
+const isAdmin = () => D && D.role==="admin";
+/* O'quvchi ism-familiyasi bo'yicha aniqlanadi (katta-kichik harf, ortiqcha bo'sh joy va tutuq belgisi farqi hisobga olinmaydi) */
+const normName = (f,l) => (String(f||"")+" "+String(l||"")).toLowerCase().replace(/[‘’ʻʼ`´]/g,"'").replace(/\s+/g," ").trim();
+const keyOf = r => String(r.tid||"")+"|"+normName(r.f,r.l);
+let T = {};
+const tName = id => (T[id]&&T[id].name)||"—";
 
 function analyse(){
   const st = {};
-  D.students.forEach(s=>{ st[s.login]={login:s.login, pass:s.pass, sheetName:s.name, active:s.active, rows:[]}; });
-  D.results.forEach(r=>{ const u=String(r.u).toLowerCase(); if(!st[u]) st[u]={login:u, pass:"", sheetName:"", active:"", rows:[], unknown:true}; st[u].rows.push(r); });
+  D.results.forEach(r=>{ const k=keyOf(r); if(!st[k]) st[k]={key:k, tid:String(r.tid||""), login:String(r.u||""), rows:[]}; st[k].rows.push(r); });
   Object.values(st).forEach(s=>{
     s.rows.sort((a,b)=>a.t-b.t);
-    const lastNamed=[...s.rows].reverse().find(r=>r.f||r.l);
-    s.name = lastNamed ? (lastNamed.f+" "+lastNamed.l).trim() : s.sheetName;
-    s.last = s.rows.length ? s.rows[s.rows.length-1].t : 0;
-    s.first = s.rows.length ? s.rows[0].t : 0;
+    const lr=s.rows[s.rows.length-1];
+    s.name = (lr.f+" "+lr.l).trim().replace(/\s+/g," ");
+    s.login = lr.u;
+    s.last = lr.t; s.first = s.rows[0].t;
     s.week = s.rows.filter(r=>Date.now()-r.t<7*DAY).length;
     s.book = {}; BOOKS.forEach(b=>s.book[b.code]={done:0, units:{}});
     s.chapters = {}; s.tenses = {}; s.wrong = {};
@@ -147,8 +153,8 @@ function analyse(){
         const C=s.chapters[x.ch]||(s.chapters[x.ch]={tries:0,best:0,passed:false,last:0});
         C.tries++; C.best=Math.max(C.best,+r.score||0); C.last=r.t; if(isPass(r)) C.passed=true;
       } else if(x.kind==="tense"){
-        const T=s.tenses[x.topic]||(s.tenses[x.topic]={tries:0,best:0,lastScore:0,last:0});
-        T.tries++; T.best=Math.max(T.best,+r.pct||0); T.lastScore=+r.pct||0; T.last=r.t;
+        const Tt=s.tenses[x.topic]||(s.tenses[x.topic]={tries:0,best:0,lastScore:0,last:0});
+        Tt.tries++; Tt.best=Math.max(Tt.best,+r.pct||0); Tt.lastScore=+r.pct||0; Tt.last=r.t;
       }
     });
     BOOKS.forEach(b=>{ const B=s.book[b.code]; let n=0; while(B.units[n+1]&&B.units[n+1].passed) n++; B.done=n; });
@@ -161,147 +167,142 @@ function analyse(){
   return st;
 }
 let S = {};
+const inTf = x => !isAdmin() || tf==="all" || String(x.tid)===tf;
 
 function renderTop(){
   if(!D){ top.innerHTML=""; return; }
-  top.innerHTML = `<div class="top"><img src="${LOGO}" alt=""><b>O‘qituvchi paneli</b><span class="who">${esc(D.teacher||"")}</span><span class="sp"></span><span class="mu" style="color:#cfd8e3">Yangilangan: ${fmtDate(D.loaded)}</span><button class="tb" id="rf">Yangilash</button><button class="tb" id="lo">Chiqish</button></div>`;
+  top.innerHTML = `<div class="top"><img src="${LOGO}" alt=""><b>${isAdmin()?"Admin paneli":"O‘qituvchi paneli"}</b><span class="who">${esc(isAdmin()?"Barcha ustozlar":D.me.name)}</span><span class="sp"></span><span class="mu" style="color:#cfd8e3">Yangilangan: ${fmtDate(D.loaded)}</span><button class="tb" id="rf">Yangilash</button><button class="tb" id="lo">Chiqish</button></div>`;
   document.getElementById("rf").onclick=()=>load(true);
-  document.getElementById("lo").onclick=()=>{ pass=""; try{sessionStorage.removeItem("bis_teacher")}catch(e){} D=null; renderTop(); loginView(); };
+  document.getElementById("lo").onclick=()=>{ pass=""; try{sessionStorage.removeItem("bis_teacher")}catch(e){} D=null; renderTop(); start(); };
 }
 async function api(a,extra){
   const r = await fetch(SERVER_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({a:a,p:pass},extra||{}))});
   return await r.json();
 }
-const ERR = {wrong:"Parol noto‘g‘ri.",locked:"Juda ko‘p xato urinish. 10 daqiqadan keyin qayta urinib ko‘ring.",short:"Parol kamida 6 ta belgidan iborat bo‘lsin.",exists:"Parol allaqachon yaratilgan. Kirish oynasidan foydalaning.",name:"Ism va familiyani to‘liq yozing.",nostudent:"Bunday login topilmadi.",count:"Bir martada 1 tadan 50 tagacha login yaratish mumkin.",net:"Serverga ulanib bo‘lmadi. Internetni tekshiring.",server:"Serverda xatolik yuz berdi."};
+const ERR = {wrong:"Parol noto‘g‘ri.",locked:"Juda ko‘p xato urinish. 10 daqiqadan keyin qayta urinib ko‘ring.",short:"Parol kamida 6 ta belgidan iborat bo‘lsin.",taken:"Bu paroldan foydalanib bo‘lmaydi, boshqa parol tanlang.",name:"Ism va familiyani to‘liq yozing.",noteacher:"Bunday ustoz topilmadi.",admin:"Bu amal faqat admin uchun.",net:"Serverga ulanib bo‘lmadi. Internetni tekshiring.",server:"Serverda xatolik yuz berdi."};
 async function start(){
   if(!SERVER_URL || SERVER_URL.indexOf("script.google.com")<0){ loginView("Server manzili hali qo‘yilmagan."); return; }
   if(pass){ load(false); return; }
-  try{ const st = await api("tstatus"); if(st.ok && !st.hasPass) setupView(); else loginView(); }
-  catch(e){ loginView(ERR.net); }
+  let hint="";
+  try{ const st = await api("pstatus"); if(st.ok && !st.hasAdmin) hint="Admin paroli hali qo‘yilmagan: Google jadvaldagi “Sozlamalar” varag‘ida admin_parol qatoriga yozing."; }catch(e){}
+  loginView("", hint);
 }
-function setupView(err){
+function loginView(err, hint){
   app.innerHTML = `<div class="login"><img src="${LOGO}" alt="BIS English logotipi"><h1>BIS English</h1><div class="mu">Round-Up — o‘qituvchi paneli</div>
-  <form class="card" id="sf"><h2 style="margin-bottom:6px">Parol yarating</h2><p class="mu" style="margin-top:0">Panelga birinchi marta kiryapsiz. O‘zingiz uchun parol o‘ylab toping — keyingi safar shu parol bilan kirasiz. Uni hech kimga bermang.</p>
-  <label for="np">Yangi parol (kamida 6 ta belgi)</label><input type="password" id="np" autocomplete="new-password">
-  <label for="np2" style="margin-top:10px">Parolni takrorlang</label><input type="password" id="np2" autocomplete="new-password">
-  <p class="err" id="er">${esc(err||"")}</p><button class="btn" id="sb">Parolni saqlash va kirish</button></form></div>`;
-  const a=document.getElementById("np"), b2=document.getElementById("np2"); a.focus();
-  document.getElementById("sf").onsubmit=async e=>{ e.preventDefault(); const er=document.getElementById("er");
-    if(a.value.length<6){ er.textContent=ERR.short; return; } if(a.value!==b2.value){ er.textContent="Ikkala parol bir xil emas."; return; }
-    document.getElementById("sb").disabled=true;
-    try{ const r=await fetch(SERVER_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({a:"tsetup",np:a.value})}).then(x=>x.json());
-      if(!r.ok){ if(r.err==="exists"){ loginView(ERR.exists); } else setupView(ERR[r.err]||ERR.server); return; }
-      pass=a.value; load(false);
-    }catch(e2){ setupView(ERR.net); } };
-}
-function loginView(err){
-  app.innerHTML = `<div class="login"><img src="${LOGO}" alt="BIS English logotipi"><h1>BIS English</h1><div class="mu">Round-Up — o‘qituvchi paneli</div>
-  <form class="card" id="lf"><label for="pw">O‘qituvchi paroli</label><input type="password" id="pw" autocomplete="current-password"><p class="err" id="er">${esc(err||"")}</p><button class="btn" id="lb">Kirish</button></form></div>`;
+  <form class="card" id="lf"><label for="pw">Parol (ustoz yoki admin)</label><input type="password" id="pw" autocomplete="current-password"><p class="err" id="er">${esc(err||"")}</p><button class="btn" id="lb">Kirish</button>${hint?`<p class="mu" style="margin:12px 0 0">${esc(hint)}</p>`:""}</form></div>`;
   const pw=document.getElementById("pw"); pw.focus();
   document.getElementById("lf").onsubmit=e=>{ e.preventDefault(); if(!pw.value.trim()){ document.getElementById("er").textContent="Parolni yozing."; return; } pass=pw.value.trim(); load(false); };
 }
 async function load(keepView){
   const lb=document.getElementById("lb"); if(lb) lb.disabled=true;
-  if(!SERVER_URL || SERVER_URL.indexOf("script.google.com")<0){ loginView("Server manzili hali qo‘yilmagan."); return; }
   try{
-    const r = await fetch(SERVER_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({a:"teacher",p:pass})});
-    const j = await r.json();
-    if(!j.ok){ pass=""; try{sessionStorage.removeItem("bis_teacher")}catch(e){}; D=null; renderTop(); loginView(j.err==="locked"?"Juda ko‘p xato urinish. 10 daqiqadan keyin qayta urinib ko‘ring.":"Parol noto‘g‘ri."); return; }
+    const j = await api("teacher");
+    if(!j.ok){ pass=""; try{sessionStorage.removeItem("bis_teacher")}catch(e){}; D=null; renderTop(); loginView(ERR[j.err]||ERR.wrong); return; }
     try{ sessionStorage.setItem("bis_teacher",pass); }catch(e){}
-    D = j; D.loaded = Date.now(); S = analyse();
+    D = j; D.loaded = Date.now(); T = {}; D.teachers.forEach(t=>T[t.id]=t); S = analyse();
+    if(!isAdmin()) tf="all";
     if(!keepView){ tab="students"; sel=null; }
     renderTop(); render();
-  }catch(e){ if(D){ alertBox("Serverga ulanib bo‘lmadi. Internetni tekshiring."); } else loginView("Serverga ulanib bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring."); }
+  }catch(e){ if(D){ alertBox(ERR.net); } else loginView("Serverga ulanib bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring."); }
 }
 function alertBox(t){ const p=document.createElement("p"); p.className="err"; p.textContent=t; app.prepend(p); }
 
 function render(){
   if(sel) return detail(sel);
-  const all=Object.values(S), withRes=all.filter(s=>s.rows.length);
+  const all=Object.values(S).filter(inTf), res=D.results.filter(inTf);
   const today=new Date(); today.setHours(0,0,0,0);
   const att=attention();
   const k=[
-    [withRes.length+" / "+D.students.length,"Kirgan o‘quvchilar / jami loginlar"],
-    [withRes.filter(s=>s.last>=today.getTime()).length,"Bugun faol"],
-    [withRes.filter(s=>Date.now()-s.last<7*DAY).length,"Shu hafta faol"],
-    [D.results.filter(r=>Date.now()-r.t<7*DAY).length,"Shu haftadagi urinishlar"]
+    [all.length,"O‘quvchilar (ism bo‘yicha)"],
+    [all.filter(s=>s.last>=today.getTime()).length,"Bugun faol"],
+    [all.filter(s=>Date.now()-s.last<7*DAY).length,"Shu hafta faol"],
+    [res.filter(r=>Date.now()-r.t<7*DAY).length,"Shu haftadagi urinishlar"]
   ];
-  let h = `<div class="kpis">${k.map(x=>`<div class="kpi"><div class="v">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("")}</div>
+  const tfSel = isAdmin() ? `<div class="tools" style="margin-bottom:6px"><div style="flex:0 1 320px"><label for="tf">Ustoz</label><select id="tf"><option value="all">Hamma ustozlar</option>${D.teachers.map(t=>`<option value="${esc(t.id)}"${tf===t.id?" selected":""}>${esc(t.name)}</option>`).join("")}</select></div></div>` : "";
+  let h = `${tfSel}<div class="kpis">${k.map(x=>`<div class="kpi"><div class="v">${x[0]}</div><div class="l">${x[1]}</div></div>`).join("")}</div>
   <div class="tabs" role="tablist">
    <button class="tab${tab==="students"?" on":""}" data-t="students">O‘quvchilar</button>
    <button class="tab${tab==="attention"?" on":""}" data-t="attention">Diqqat talab${att.length?`<span class="n">${att.length}</span>`:""}</button>
    <button class="tab${tab==="feed"?" on":""}" data-t="feed">So‘nggi natijalar</button>
-   <button class="tab${tab==="logins"?" on":""}" data-t="logins">O‘quvchilar boshqaruvi</button>
+   ${isAdmin()?`<button class="tab${tab==="teachers"?" on":""}" data-t="teachers">Ustozlar</button>`:`<button class="tab${tab==="group"?" on":""}" data-t="group">O‘quvchilar logini</button>`}
    <button class="tab${tab==="settings"?" on":""}" data-t="settings">Sozlamalar</button>
   </div>`;
   if(tab==="students") h+=studentsView(all);
   if(tab==="attention") h+=attentionView(att);
-  if(tab==="feed") h+=feedView();
-  if(tab==="logins") h+=loginsView();
+  if(tab==="feed") h+=feedView(res);
+  if(tab==="teachers" && isAdmin()) h+=teachersView();
+  if(tab==="group" && !isAdmin()) h+=groupView();
   if(tab==="settings") h+=settingsView();
-  h+=`<p class="foot">Ma’lumotlar Round-Up serveridagi “Natijalar” va “Login” jadvallaridan olinadi. O‘quvchi qo‘shish, parolni yangilash va o‘chirish “O‘quvchilar boshqaruvi” bo‘limida.</p>`;
+  h+=`<p class="foot">${isAdmin()?"Siz admin sifatida barcha ustozlar va ularning o‘quvchilarini ko‘ryapsiz.":"Siz faqat o‘zingizning o‘quvchilaringizni ko‘ryapsiz."} O‘quvchilar ism-familiyasi bo‘yicha guruhlanadi.</p>`;
   app.innerHTML=h;
   app.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{tab=b.dataset.t; render();});
   bind();
 }
 function progCell(n,total){ const p=total?Math.round(n*100/total):0; return `<span class="prog">${n}/${total}<i><b style="width:${p}%"></b></i></span>`; }
 function studentsView(all){
-  let list=all.filter(s=>s.rows.length||!s.unknown);
-  if(q){ const qq=q.toLowerCase(); list=list.filter(s=>s.login.includes(qq)||(s.name||"").toLowerCase().includes(qq)); }
-  const val=s=>({login:s.login,name:(s.name||"").toLowerCase(),last:s.last,S:s.book.S.done,R1:s.book.R1.done,R2:s.book.R2.done,V:s.book.V.done,read:s.readDone,tense:s.tenseAvg==null?-1:s.tenseAvg,week:s.week,total:s.rows.length}[sortKey]);
+  let list=all;
+  if(q){ const qq=q.toLowerCase(); list=list.filter(s=>(s.name||"").toLowerCase().includes(qq)); }
+  const val=s=>({teacher:tName(s.tid).toLowerCase(),name:(s.name||"").toLowerCase(),last:s.last,S:s.book.S.done,R1:s.book.R1.done,R2:s.book.R2.done,V:s.book.V.done,read:s.readDone,tense:s.tenseAvg==null?-1:s.tenseAvg,week:s.week,total:s.rows.length}[sortKey]);
   list.sort((a,b)=>{const x=val(a),y=val(b); return (x>y?1:x<y?-1:0)*sortDir;});
   const th=(k,t,num)=>`<th class="sort" data-s="${k}" ${num?'style="text-align:right"':""}>${t}${sortKey===k?(sortDir>0?" ▲":" ▼"):""}</th>`;
-  const rows=list.map(s=>`<tr class="click" data-u="${esc(s.login)}"><td><b>${esc(s.login)}</b></td><td>${esc(s.name||"—")}${s.unknown?' <span class="pill p-warn">loginlar ro‘yxatida yo‘q</span>':""}</td><td>${s.rows.length?esc(ago(s.last)):'<span class="pill p-mu">hali kirmagan</span>'}</td>
+  const rows=list.map(s=>`<tr class="click" data-u="${esc(s.key)}"><td><b>${esc(s.name||"—")}</b></td>${isAdmin()?`<td>${esc(tName(s.tid))}</td>`:""}<td>${esc(ago(s.last))}</td>
    ${BOOKS.map(b=>`<td>${progCell(s.book[b.code].done,b.units)}</td>`).join("")}<td>${progCell(s.readDone,CHAPTERS.length)}</td><td class="num">${s.tenseAvg==null?"—":s.tenseAvg+"% <span class='mu'>("+s.tenseCount+")</span>"}</td><td class="num">${s.week}</td><td class="num">${s.rows.length}</td></tr>`).join("");
-  return `<div class="tools"><div><label for="q">Qidirish</label><input type="search" id="q" placeholder="Login yoki ism" value="${esc(q)}"></div></div>
-  <div class="scroll"><table><thead><tr>${th("login","Login")}${th("name","Ism familiya")}${th("last","Oxirgi faollik")}${th("S","Starter")}${th("R1","Round-Up 1")}${th("R2","Round-Up 2")}${th("V","Qo‘shimcha")}${th("read","Reading")}${th("tense","Zamonlar",1)}${th("week","Hafta",1)}${th("total","Jami",1)}</tr></thead>
-  <tbody>${rows||`<tr><td colspan="11" class="empty">Hech narsa topilmadi.</td></tr>`}</tbody></table></div>
-  <p class="mu" style="margin-top:8px">Lug‘at va Reading ustunlarida — yodlangan unitlar / boblar soni. Zamonlar — ishlangan mavzular bo‘yicha eng yaxshi natijalar o‘rtachasi (qavsda mavzular soni). “Hafta” — oxirgi 7 kundagi urinishlar. Qatorni bosing — o‘quvchining batafsil natijalari ochiladi.</p>`;
+  const cols = isAdmin()?11:10;
+  return `<div class="tools"><div><label for="q">Qidirish</label><input type="search" id="q" placeholder="Ism yoki familiya" value="${esc(q)}"></div></div>
+  <div class="scroll"><table><thead><tr>${th("name","Ism familiya")}${isAdmin()?th("teacher","Ustoz"):""}${th("last","Oxirgi faollik")}${th("S","Starter")}${th("R1","Round-Up 1")}${th("R2","Round-Up 2")}${th("V","Qo‘shimcha")}${th("read","Reading")}${th("tense","Zamonlar",1)}${th("week","Hafta",1)}${th("total","Jami",1)}</tr></thead>
+  <tbody>${rows||`<tr><td colspan="${cols}" class="empty">${q?"Hech narsa topilmadi.":"Hali birorta o‘quvchi mashq ishlamagan."}</td></tr>`}</tbody></table></div>
+  <p class="mu" style="margin-top:8px">O‘quvchi ro‘yxatda birinchi mashqni tugatgandan keyin paydo bo‘ladi. Lug‘at va Reading ustunlarida — yodlangan unitlar / boblar soni. Zamonlar — ishlangan mavzular bo‘yicha eng yaxshi natijalar o‘rtachasi (qavsda mavzular soni). “Hafta” — oxirgi 7 kundagi urinishlar. Qatorni bosing — o‘quvchining batafsil natijalari ochiladi.</p>`;
 }
 function attention(){
   const out=[];
-  Object.values(S).forEach(s=>{
+  Object.values(S).filter(inTf).forEach(s=>{
     s.stuck.forEach(t=>out.push({s,type:"stuck",t}));
-    if(s.rows.length && Date.now()-s.last>=3*DAY) out.push({s,type:"idle",t:Math.floor((Date.now()-s.last)/DAY)+" kundan beri kirmagan"});
-    if(!s.rows.length && !s.unknown && s.name) out.push({s,type:"never",t:"Login berilgan, lekin hali bir marta ham kirmagan"});
+    if(Date.now()-s.last>=3*DAY) out.push({s,type:"idle",t:Math.floor((Date.now()-s.last)/DAY)+" kundan beri kirmagan"});
   });
   return out;
 }
 function attentionView(att){
   if(!att.length) return `<div class="card empty">Hozircha diqqat talab qiladigan o‘quvchi yo‘q.</div>`;
-  const lab={stuck:["p-bad","Qiynalyapti"],idle:["p-warn","Kirmayapti"],never:["p-mu","Kirmagan"]};
-  return `<div class="card">${att.sort((a,b)=>a.type.localeCompare(b.type)).map(a=>`<div class="alert"><span class="pill ${lab[a.type][0]}">${lab[a.type][1]}</span><div><b><a href="#" data-u="${esc(a.s.login)}">${esc(a.s.name||a.s.login)}</a></b> <span class="mu">${esc(a.s.login)}</span><br>${esc(a.t)}</div></div>`).join("")}</div>
+  const lab={stuck:["p-bad","Qiynalyapti"],idle:["p-warn","Kirmayapti"]};
+  return `<div class="card">${att.sort((a,b)=>a.type.localeCompare(b.type)).map(a=>`<div class="alert"><span class="pill ${lab[a.type][0]}">${lab[a.type][1]}</span><div><b><a href="#" data-u="${esc(a.s.key)}">${esc(a.s.name)}</a></b>${isAdmin()?` <span class="mu">${esc(tName(a.s.tid))}</span>`:""}<br>${esc(a.t)}</div></div>`).join("")}</div>
   <p class="mu" style="margin-top:8px">“Qiynalyapti” — bitta unit yoki bobni 3 va undan ko‘p marta ishlab, hali o‘ta olmagan. “Kirmayapti” — 3 kun va undan ko‘p vaqtdan beri mashq qilmagan.</p>`;
 }
 function resultRow(r,showStudent){
-  const x=section(r), s=S[String(r.u).toLowerCase()]||{};
+  const x=section(r), k=keyOf(r), s=S[k]||{};
   const what = x.kind==="lugat"?"Lug‘at":x.kind==="reading"?"Reading":x.kind==="tense"?"Zamonlar":"Boshqa";
   const passCell = String(r.passed)? (isPass(r)?'<span class="pill p-ok">o‘tdi</span>':'<span class="pill p-bad">qayta</span>') : "";
-  return `<tr>${showStudent?`<td><a href="#" data-u="${esc(String(r.u).toLowerCase())}">${esc(s.name||r.u)}</a><br><span class="mu">${esc(r.u)}</span></td>`:""}<td>${esc(fmtDate(r.t))}</td><td>${what}</td><td>${esc(String(r.app).replace(/ · Lug‘at$/,"").replace(/^Zamonlar · /,"").replace(/^Reading · .*/,"Reading"))}<br><span class="mu">${esc(r.unit)}</span></td><td class="num">${esc(r.score)}/${esc(r.max)}</td><td class="num">${r.pct!==""?esc(r.pct)+"%":""}</td><td>${passCell}</td><td>${esc(r.wrong||"")}</td></tr>`;
+  return `<tr>${showStudent?`<td><a href="#" data-u="${esc(k)}">${esc(s.name||(r.f+" "+r.l))}</a>${isAdmin()?`<br><span class="mu">${esc(tName(r.tid))}</span>`:""}</td>`:""}<td>${esc(fmtDate(r.t))}</td><td>${what}</td><td>${esc(String(r.app).replace(/ · Lug‘at$/,"").replace(/^Zamonlar · /,"").replace(/^Reading · .*/,"Reading"))}<br><span class="mu">${esc(r.unit)}</span></td><td class="num">${esc(r.score)}/${esc(r.max)}</td><td class="num">${r.pct!==""?esc(r.pct)+"%":""}</td><td>${passCell}</td><td>${esc(r.wrong||"")}</td></tr>`;
 }
-function feedView(){
-  let rs=[...D.results].sort((a,b)=>b.t-a.t);
+function feedView(res){
+  let rs=[...res].sort((a,b)=>b.t-a.t);
   if(feedFilter!=="all") rs=rs.filter(r=>section(r).kind===feedFilter);
-  if(q){ const qq=q.toLowerCase(); rs=rs.filter(r=>String(r.u).toLowerCase().includes(qq)||(r.f+" "+r.l).toLowerCase().includes(qq)); }
+  if(q){ const qq=q.toLowerCase(); rs=rs.filter(r=>(r.f+" "+r.l).toLowerCase().includes(qq)); }
   const shown=rs.slice(0,300);
-  return `<div class="tools"><div><label for="q">Qidirish</label><input type="search" id="q" placeholder="Login yoki ism" value="${esc(q)}"></div>
+  return `<div class="tools"><div><label for="q">Qidirish</label><input type="search" id="q" placeholder="Ism yoki familiya" value="${esc(q)}"></div>
   <div><label for="ff">Bo‘lim</label><select id="ff">${[["all","Hammasi"],["lugat","Lug‘at"],["reading","Reading"],["tense","Zamonlar"]].map(o=>`<option value="${o[0]}"${feedFilter===o[0]?" selected":""}>${o[1]}</option>`).join("")}</select></div></div>
   <div class="scroll"><table><thead><tr><th>O‘quvchi</th><th>Sana</th><th>Bo‘lim</th><th>Mavzu</th><th style="text-align:right">Ball</th><th style="text-align:right">Foiz</th><th>Holat</th><th>Xato so‘zlar</th></tr></thead>
   <tbody>${shown.map(r=>resultRow(r,true)).join("")||`<tr><td colspan="8" class="empty">Hali natija yo‘q.</td></tr>`}</tbody></table></div>
   <p class="mu" style="margin-top:8px">${rs.length>300?"Oxirgi 300 tasi ko‘rsatilgan, jami "+rs.length+" ta.":"Jami "+rs.length+" ta natija."}</p>`;
 }
 let lastNew=null, flash="";
-function loginsView(){
-  const off=v=>/^(yo'?q|нет|no|0)$/i.test(String(v).trim());
-  const list=[...D.students].sort((a,b)=>a.login.localeCompare(b.login));
-  const rows=list.map(s=>{const st=S[s.login]; const nm=s.name||""; return `<tr><td><b>${esc(s.login)}</b></td><td>${esc(s.pass)}</td><td>${nm?esc(nm):'<span class="mu">— ism yozilmagan —</span>'}</td><td>${off(s.active)?'<span class="pill p-bad">o‘chirilgan</span>':'<span class="pill p-ok">faol</span>'}</td><td>${s.lastLogin?esc(ago(s.lastLogin)):"—"}</td>
-   <td><div class="acts"><button class="sbtn" data-act="rename" data-l="${esc(s.login)}">Ism</button><button class="sbtn" data-act="reset" data-l="${esc(s.login)}">Yangi parol</button>${off(s.active)?`<button class="sbtn" data-act="on" data-l="${esc(s.login)}">Faollashtirish</button>`:`<button class="sbtn dng" data-act="off" data-l="${esc(s.login)}">O‘chirish</button>`}</div></td></tr>`;}).join("");
-  const pr=list.filter(s=>!off(s.active)).map(s=>`<tr><td>${esc(s.name||"")}</td><td>${esc(s.login)}</td><td>${esc(s.pass)}</td></tr>`).join("");
-  const nw=lastNew&&lastNew.length?`<div class="newst"><div class="mu" style="color:var(--ok);font-weight:700">${lastNew.length>1?lastNew.length+" ta login yaratildi":"Yangi login yaratildi"} — har bir o‘quvchiga bittadan bering:</div>${lastNew.map(x=>`<div class="cred" style="margin-top:6px">${x.name?esc(x.name)+" — ":""}Login: ${esc(x.login)} &nbsp; Parol: ${esc(x.pass)}</div>`).join("")}</div>`:"";
-  return `${nw}<form class="card" id="addf" style="margin-bottom:12px"><h3>Yangi login yaratish</h3><p class="mu" style="margin-top:0">Grammarway’dagidek: login va parol yarating, o‘quvchiga bering. O‘quvchi birinchi kirganda ism-familiyasini o‘zi yozadi. Xohlasangiz ismni hozir o‘zingiz yozib qo‘yishingiz ham mumkin.</p><div class="row"><div style="flex:0 0 120px"><label for="cnt">Nechta login</label><input type="number" id="cnt" value="1" min="1" max="50"></div><div><label for="nn">Ism familiya (ixtiyoriy, faqat 1 ta login uchun)</label><input type="text" id="nn" placeholder="Bo‘sh qoldirsangiz, o‘quvchi o‘zi yozadi" maxlength="60"></div><div style="flex:0 0 auto"><button class="sbtn pri" id="addb" style="padding:11px 16px">Login va parol yaratish</button></div></div><p class="err" id="adder"></p><p class="ok">${esc(flash)}</p></form>
-  <div class="tools"><div class="mu" style="flex:3 1 300px">Login va parolni faqat siz berasiz. Har bir o‘quvchining paroli alohida. Bitta login bir vaqtda faqat bitta qurilmada ochiladi — boshqa joydan kirilsa, oldingi qurilma chiqarib yuboriladi. O‘quvchi ismini bir marta yozadi, keyin uni faqat siz o‘zgartira olasiz.</div><div style="flex:0 0 auto"><button class="back" id="pp" style="margin:0">Ro‘yxatni chop etish (oq-qora)</button></div></div>
-  <div class="scroll"><table><thead><tr><th>Login</th><th>Parol</th><th>Ism familiya</th><th>Holat</th><th>Oxirgi kirish</th><th>Amallar</th></tr></thead><tbody>${rows||`<tr><td colspan="6" class="empty">Hali o‘quvchi yo‘q. Yuqoridan qo‘shing.</td></tr>`}</tbody></table></div>
-  <div class="printzone printable"><h2>BIS English — Round-Up loginlari</h2><table><thead><tr><th>Ism familiya</th><th>Login</th><th>Parol</th></tr></thead><tbody>${pr}</tbody></table></div>`;
+function credCard(t){
+  return `<div class="printzone printable"><h2>BIS English — Round-Up</h2><p>Ustoz: <b>${esc(t.name)}</b></p><table><tbody><tr><th>Sayt</th><td>${esc(SITE_URL)}</td></tr><tr><th>Login</th><td>${esc(t.login)}</td></tr><tr><th>Parol</th><td>${esc(t.pass)}</td></tr></tbody></table><p>Kirgandan keyin ism va familiyangizni to‘liq yozing.</p></div>`;
+}
+function groupView(){
+  const t=D.teachers[0]; if(!t) return `<div class="card empty">Ma’lumot topilmadi.</div>`;
+  return `<div class="newst"><div class="mu" style="color:var(--ok);font-weight:700">Shu login va parolni barcha o‘quvchilaringizga bering:</div><div class="cred" style="margin-top:6px">Login: ${esc(t.login)} &nbsp; Parol: ${esc(t.pass)}</div><div class="mu" style="margin-top:6px">Sayt: ${esc(SITE_URL)}</div></div>
+  <div class="card"><p style="margin-top:0">Hamma o‘quvchilaringiz shu bitta login bilan kiradi. Kirgandan keyin har biri o‘z ism-familiyasini yozadi — natijalar shu ism bo‘yicha sizga keladi.</p>
+  <p class="mu">O‘quvchilardan ismni har safar bir xil yozishni so‘rang (masalan: “Ali Valiyev”). Boshqacha yozilsa, panelda alohida o‘quvchi bo‘lib ko‘rinadi.</p>
+  <p class="mu">Parolni yangilash kerak bo‘lsa (masalan, boshqa guruh o‘quvchilari bilib qolsa), adminga murojaat qiling.</p>
+  <button class="back" id="pp" style="margin:0">Login kartasini chop etish (oq-qora)</button></div>${credCard(t)}`;
+}
+function teachersView(){
+  const rows=D.teachers.map(t=>{ const n=Object.values(S).filter(s=>s.tid===t.id).length; return `<tr><td><b>${esc(t.name)}</b>${t.phone?`<br><span class="mu">${esc(t.phone)}</span>`:""}</td><td><b>${esc(t.login)}</b></td><td>${esc(t.pass)}</td><td>${esc(t.panelPass||"")}</td><td>${t.active?'<span class="pill p-ok">faol</span>':'<span class="pill p-bad">o‘chirilgan</span>'}</td><td class="num">${n}</td>
+   <td><div class="acts"><button class="sbtn" data-act="rename" data-l="${esc(t.id)}">Ism / telefon</button><button class="sbtn" data-act="resetStudent" data-l="${esc(t.id)}">Yangi o‘quvchi paroli</button><button class="sbtn" data-act="resetPanel" data-l="${esc(t.id)}">Yangi panel paroli</button>${t.active?`<button class="sbtn dng" data-act="off" data-l="${esc(t.id)}">O‘chirish</button>`:`<button class="sbtn" data-act="on" data-l="${esc(t.id)}">Faollashtirish</button>`}</div></td></tr>`; }).join("");
+  const nw=lastNew?`<div class="newst"><div class="mu" style="color:var(--ok);font-weight:700">Yangi ustoz qo‘shildi: ${esc(lastNew.name)}</div><div class="cred" style="margin-top:6px">Panel paroli (ustozning o‘ziga): ${esc(lastNew.panelPass)}</div><div class="cred">O‘quvchilar logini: ${esc(lastNew.login)} &nbsp; Paroli: ${esc(lastNew.pass)}</div><div class="mu" style="margin-top:6px">Panel: ${esc(location.href.split("#")[0])}</div></div>`:"";
+  return `${nw}<form class="card" id="addf" style="margin-bottom:12px"><h3>Yangi ustoz qo‘shish</h3><p class="mu" style="margin-top:0">Ustozga panel paroli va uning o‘quvchilari uchun bitta login-parol avtomatik yaratiladi.</p><div class="row"><div><label for="nn">Ustoz ism-familiyasi</label><input type="text" id="nn" placeholder="Masalan: Malika Karimova" maxlength="60"></div><div><label for="ph">Telefon (ixtiyoriy)</label><input type="text" id="ph" placeholder="+998 90 123 45 67" maxlength="40"></div><div style="flex:0 0 auto"><button class="sbtn pri" id="addb" style="padding:11px 16px">Ustoz qo‘shish</button></div></div><p class="err" id="adder"></p><p class="ok">${esc(flash)}</p></form>
+  <div class="scroll"><table><thead><tr><th>Ustoz</th><th>O‘quvchilar logini</th><th>O‘quvchilar paroli</th><th>Panel paroli</th><th>Holat</th><th style="text-align:right">O‘quvchilar</th><th>Amallar</th></tr></thead><tbody>${rows||`<tr><td colspan="7" class="empty">Hali ustoz yo‘q. Yuqoridan qo‘shing.</td></tr>`}</tbody></table></div>
+  <p class="mu" style="margin-top:8px">“Yangi o‘quvchi paroli” — shu ustozning hamma o‘quvchilari saytdan chiqariladi va yangi parol bilan kiradi. “O‘chirish” — ustoz panelga, uning o‘quvchilari saytga kira olmaydi; natijalar saqlanib qoladi.</p>`;
 }
 function settingsView(){
   return `<form class="card" id="cpf" style="max-width:460px"><h3>Parolni o‘zgartirish</h3>
@@ -309,15 +310,16 @@ function settingsView(){
   <label for="cp2" style="margin-top:10px">Yangi parolni takrorlang</label><input type="password" id="cp2" autocomplete="new-password">
   <p class="err" id="cper"></p><p class="ok">${esc(flash)}</p><button class="btn" id="cpb" style="width:auto;padding:11px 18px">Saqlash</button></form>`;
 }
-async function studentAction(act,login){
-  const s=D.students.find(x=>x.login===login); if(!s) return;
-  let extra={login:login};
-  if(act==="rename"){ const v=window.prompt?null:null; const cur=s.name||""; const nv=await askText("Yangi ism familiya ("+login+")",cur); if(nv==null) return; if(nv.trim().length<3){ flash=""; alertBox(ERR.name); return; } extra.name=nv.trim(); }
-  if(act==="reset"){ if(!(await askConfirm(login+" uchun yangi parol yaratilsinmi? Eski parol ishlamay qoladi va o‘quvchi barcha qurilmalardan chiqariladi."))) return; extra.reset=true; }
-  if(act==="off"){ if(!(await askConfirm(login+" o‘chirilsinmi? O‘quvchi kira olmaydi, natijalari saqlanib qoladi."))) return; extra.active=false; }
+async function teacherAction(act,id){
+  const t=T[id]; if(!t) return;
+  let extra={id:id};
+  if(act==="rename"){ const nv=await askText("Ustoz ism-familiyasi",t.name); if(nv==null) return; if(nv.trim().length<3){ alertBox(ERR.name); return; } const ph=await askText("Telefon (bo‘sh qoldirsa bo‘ladi)",t.phone||""); if(ph==null) return; extra.name=nv.trim(); extra.phone=ph.trim(); }
+  if(act==="resetStudent"){ if(!(await askConfirm(t.name+" o‘quvchilari uchun yangi parol yaratilsinmi? Eski parol ishlamay qoladi va uning hamma o‘quvchilari saytdan chiqariladi."))) return; extra.resetStudent=true; }
+  if(act==="resetPanel"){ if(!(await askConfirm(t.name+" uchun yangi panel paroli yaratilsinmi? Eski panel paroli ishlamay qoladi."))) return; extra.resetPanel=true; }
+  if(act==="off"){ if(!(await askConfirm(t.name+" o‘chirilsinmi? Ustoz panelga, uning o‘quvchilari saytga kira olmaydi. Natijalar saqlanib qoladi."))) return; extra.active=false; }
   if(act==="on"){ extra.active=true; }
-  try{ const r=await api("updStudent",extra); if(!r.ok){ alertBox(ERR[r.err]||ERR.server); return; }
-    flash = act==="reset" ? (login+" uchun yangi parol: "+r.pass) : act==="rename" ? "Ism saqlandi." : act==="off" ? (login+" o‘chirildi.") : (login+" faollashtirildi.");
+  try{ const r=await api("updTeacher",extra); if(!r.ok){ alertBox(ERR[r.err]||ERR.server); return; }
+    flash = act==="resetStudent" ? (t.name+" o‘quvchilari uchun yangi parol: "+r.pass) : act==="resetPanel" ? (t.name+" uchun yangi panel paroli: "+r.panelPass) : act==="rename" ? "Saqlandi." : act==="off" ? (t.name+" o‘chirildi.") : (t.name+" faollashtirildi.");
     lastNew=null; await load(true); flash="";
   }catch(e){ alertBox(ERR.net); }
 }
@@ -335,11 +337,11 @@ function detail(u){
    +`<div class="book"><div class="t">Zamonlar</div><div class="bar"><b style="width:${Math.round(s.tenseCount*100/TENSES.length)}%"></b></div><div class="mu">${s.tenseCount} / ${TENSES.length} mavzu ishlangan${s.tenseAvg!=null?", o‘rtacha "+s.tenseAvg+"%":""}</div></div>`;
   const unitRows=BOOKS.flatMap(b=>Object.entries(s.book[b.code].units).sort((x,y)=>+x[0]-+y[0]).map(([n,U])=>`<tr><td>${b.t}</td><td>Unit ${n}</td><td class="num">${U.tries}</td><td class="num">${U.best}/${U.max}</td><td>${U.passed?'<span class="pill p-ok">yodlandi</span>':U.tries>=3?'<span class="pill p-bad">qiynalyapti</span>':'<span class="pill p-warn">jarayonda</span>'}</td><td>${esc(fmtDate(U.last))}</td></tr>`)).join("");
   const chRows=CHAPTERS.map((t,i)=>{const C=s.chapters[i+1]; return C?`<tr><td>${i+1}. ${esc(t)}</td><td class="num">${C.tries}</td><td class="num">${C.best}/12</td><td>${C.passed?'<span class="pill p-ok">tugatildi</span>':'<span class="pill p-warn">qayta</span>'}</td></tr>`:"";}).join("");
-  const tRows=TENSES.map(t=>{const T=s.tenses[t]; return `<tr><td>${esc(t)}</td><td class="num">${T?T.tries:"—"}</td><td class="num">${T?T.best+"%":"—"}</td><td class="num">${T?T.lastScore+"%":"—"}</td></tr>`;}).join("");
+  const tRows=TENSES.map(t=>{const Tt=s.tenses[t]; return `<tr><td>${esc(t)}</td><td class="num">${Tt?Tt.tries:"—"}</td><td class="num">${Tt?Tt.best+"%":"—"}</td><td class="num">${Tt?Tt.lastScore+"%":"—"}</td></tr>`;}).join("");
   const words=Object.entries(s.wrong).sort((a,b)=>b[1]-a[1]).slice(0,40);
   const hist=[...s.rows].sort((a,b)=>b.t-a.t).slice(0,200);
   app.innerHTML=`<button class="back" id="bk">← O‘quvchilar ro‘yxati</button>
-  <div class="card"><h2>${esc(s.name||"Ism kiritilmagan")}</h2><div class="mu">Login: <b>${esc(s.login)}</b>${s.pass?" · Parol: "+esc(s.pass):""} · Birinchi kirgan: ${esc(fmtDate(s.first))} · Oxirgi faollik: ${esc(s.last?fmtDate(s.last)+" ("+ago(s.last)+")":"hali kirmagan")} · Jami urinishlar: ${s.rows.length}</div>
+  <div class="card"><h2>${esc(s.name)}</h2><div class="mu">Ustoz: <b>${esc(tName(s.tid))}</b> · Login: ${esc(s.login)} · Birinchi mashq: ${esc(fmtDate(s.first))} · Oxirgi faollik: ${esc(fmtDate(s.last)+" ("+ago(s.last)+")")} · Jami urinishlar: ${s.rows.length}</div>
   ${s.stuck.length?`<div style="margin-top:10px">${s.stuck.map(t=>`<div class="alert"><span class="pill p-bad">Qiynalyapti</span><div>${esc(t)}</div></div>`).join("")}</div>`:""}
   <div class="books">${bk}</div></div>
   <div class="grid2" style="margin-top:14px">
@@ -356,25 +358,23 @@ function bind(){
   const qi=document.getElementById("q");
   if(qi){ qi.oninput=()=>{ q=qi.value; const pos=qi.selectionStart; render(); const n=document.getElementById("q"); if(n){ n.focus(); try{n.setSelectionRange(pos,pos);}catch(e){} } }; }
   const ff=document.getElementById("ff"); if(ff) ff.onchange=()=>{ feedFilter=ff.value; render(); };
-  app.querySelectorAll("th.sort").forEach(t=>t.onclick=()=>{ const k=t.dataset.s; if(sortKey===k) sortDir=-sortDir; else { sortKey=k; sortDir=(k==="login"||k==="name")?1:-1; } render(); });
+  const tfs=document.getElementById("tf"); if(tfs) tfs.onchange=()=>{ tf=tfs.value; render(); };
+  app.querySelectorAll("th.sort").forEach(t=>t.onclick=()=>{ const k=t.dataset.s; if(sortKey===k) sortDir=-sortDir; else { sortKey=k; sortDir=(k==="teacher"||k==="name")?1:-1; } render(); });
   app.querySelectorAll("tr.click").forEach(r=>r.onclick=()=>{ sel=r.dataset.u; render(); });
   app.querySelectorAll("a[data-u]").forEach(a=>a.onclick=e=>{ e.preventDefault(); sel=a.dataset.u; render(); });
   const pp=document.getElementById("pp"); if(pp) pp.onclick=()=>{ try{ window.print(); }catch(e){} };
-  app.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>studentAction(b.dataset.act,b.dataset.l));
+  app.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>teacherAction(b.dataset.act,b.dataset.l));
   const af=document.getElementById("addf");
   if(af) af.onsubmit=async e=>{ e.preventDefault(); const nn=document.getElementById("nn"), er=document.getElementById("adder"); const nm=nn.value.trim();
-    const cnt=Math.floor(Number(document.getElementById("cnt").value)||0);
-    if(cnt<1||cnt>50){ er.textContent="Bir martada 1 tadan 50 tagacha login yaratish mumkin."; return; }
-    if(nm && cnt>1){ er.textContent="Ism yozilsa, faqat 1 ta login yaratiladi. Ismni o‘chiring yoki sonni 1 qiling."; return; }
-    if(nm && (nm.split(/\s+/).length<2||nm.length<5)){ er.textContent="Ism va familiyani to‘liq yozing (masalan: Ali Valiyev) yoki bo‘sh qoldiring."; nn.focus(); return; }
+    if(nm.split(/\s+/).length<2||nm.length<5){ er.textContent="Ustozning ism va familiyasini to‘liq yozing."; nn.focus(); return; }
     document.getElementById("addb").disabled=true;
-    try{ const r=await api("addStudent",{name:nm,count:cnt}); if(!r.ok){ er.textContent=ERR[r.err]||ERR.server; document.getElementById("addb").disabled=false; return; }
-      lastNew=r.students||[r.student]; await load(true);
+    try{ const r=await api("addTeacher",{name:nm,phone:document.getElementById("ph").value.trim()}); if(!r.ok){ er.textContent=ERR[r.err]||ERR.server; document.getElementById("addb").disabled=false; return; }
+      lastNew=r.teacher; await load(true);
     }catch(e2){ er.textContent=ERR.net; document.getElementById("addb").disabled=false; } };
   const cpf=document.getElementById("cpf");
-  if(cpf) cpf.onsubmit=async e=>{ e.preventDefault(); const a=document.getElementById("cp1").value, b3=document.getElementById("cp2").value, er=document.getElementById("cper");
+  if(cpf) cpf.onsubmit=async e=>{ e.preventDefault(); const a=document.getElementById("cp1").value.trim(), b3=document.getElementById("cp2").value.trim(), er=document.getElementById("cper");
     if(a.length<6){ er.textContent=ERR.short; return; } if(a!==b3){ er.textContent="Ikkala parol bir xil emas."; return; }
-    try{ const r=await api("tchange",{np:a}); if(!r.ok){ er.textContent=ERR[r.err]||ERR.server; return; } pass=a; try{ sessionStorage.setItem("bis_teacher",pass); }catch(e3){} flash="Parol o‘zgartirildi. Keyingi safar yangi parol bilan kirasiz."; render(); flash=""; }
+    try{ const r=await api("pchange",{np:a}); if(!r.ok){ er.textContent=ERR[r.err]||ERR.server; return; } pass=a; try{ sessionStorage.setItem("bis_teacher",pass); }catch(e3){} flash="Parol o‘zgartirildi. Keyingi safar yangi parol bilan kirasiz."; render(); flash=""; }
     catch(e2){ er.textContent=ERR.net; } };
 }
 start();

@@ -159,14 +159,14 @@ const I18N = {
   back:"← Orqaga",mLugat:"So‘z yodlash",tensesT:"Zamonlar",tensesD:"Round-Up kitoblaridagi zamonlar — 10 ta mavzu, har safar yangi savollar",tensesP:"Mavzuni tanlang",readT:"Reading",readD:"“4 Businessmen on a Train” kitobi — 13 ta bob, har bobdan keyin savollar",mRead:"Reading",showPw:"Parolni ko‘rsatish",hidePw:"Parolni yashirish",
   wrong:"Login yoki parol noto‘g‘ri.",inactive:"Bu hisob o‘chirilgan. O‘qituvchiga murojaat qiling.",locked:"Juda ko‘p xato urinish. 10 daqiqadan keyin qayta urinib ko‘ring.",
   empty:"Login va parolni yozing.",net:"Serverga ulanib bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.",cfg:"Kirish tizimi hali sozlanmagan. O‘qituvchiga xabar bering.",
-  nameErr:"Ism va familiyani to‘liq yozing.",other:"Bu login bilan boshqa qurilmadan kirildi. Qaytadan kiring.",idle:"Uzoq vaqt harakat bo‘lmagani uchun xavfsizlik maqsadida tizimdan chiqildi. Qaytadan kiring."},
+  nameErr:"Ism va familiyani to‘liq yozing.",other:"Login paroli yangilandi. Ustozingizdan yangi parolni olib, qaytadan kiring.",idle:"Uzoq vaqt harakat bo‘lmagani uchun xavfsizlik maqsadida tizimdan chiqildi. Qaytadan kiring."},
  ru:{loginSub:"Вход в упражнения Round-Up",login:"Логин",password:"Пароль",enter:"Войти",loginHint:"Логин и пароль можно получить у преподавателя.",
   tagline:"Упражнения Round-Up",loggedAs:"Вы вошли как:",logout:"Выйти",nameTitle:"Введите имя и фамилию",first:"Имя",last:"Фамилия",cont:"Продолжить →",
   hello:n=>"Привет, "+n+"!",contactT:"Связаться с преподавателем",contactD:"Есть вопрос? Напишите преподавателю в Telegram",teachersT:"Связаться с преподавателем",teachersD:"Выберите преподавателя — откроется его личный Telegram",noTeachers:"Список преподавателей пока не добавлен.",pickBook:"По какой книге будете заниматься?",chgName:"Изменить имя",
   back:"← Назад",mLugat:"Заучивание слов",tensesT:"Времена",tensesD:"Времена из книг Round-Up — 10 тем, каждый раз новые вопросы",tensesP:"Выберите тему",readT:"Чтение (Reading)",readD:"Книга «4 Businessmen on a Train» — 13 глав, после каждой главы вопросы",mRead:"Чтение",showPw:"Показать пароль",hidePw:"Скрыть пароль",
   wrong:"Неверный логин или пароль.",inactive:"Эта учётная запись отключена. Обратитесь к преподавателю.",locked:"Слишком много неудачных попыток. Повторите через 10 минут.",
   empty:"Введите логин и пароль.",net:"Не удалось связаться с сервером. Проверьте интернет и попробуйте снова.",cfg:"Система входа ещё не настроена. Сообщите преподавателю.",
-  nameErr:"Введите полностью имя и фамилию.",other:"С этим логином вошли с другого устройства. Войдите снова.",idle:"Вы долго не были активны, поэтому для безопасности выполнен выход. Войдите снова."}
+  nameErr:"Введите полностью имя и фамилию.",other:"Пароль логина обновлён. Получите новый пароль у преподавателя и войдите снова.",idle:"Вы долго не были активны, поэтому для безопасности выполнен выход. Войдите снова."}
 };
 let lang = "uz";
 const tr = k => (I18N[lang][k]!==undefined ? I18N[lang][k] : I18N.uz[k]);
@@ -265,24 +265,15 @@ async function callCheck(sess){
 }
 /* Sessiya: login + token (parol saqlanmaydi). 3 soat harakatsizlikdan keyin avtomatik chiqish. */
 const IDLE_MS = 3*60*60*1000;
-let lockedName = false;
 function getSess(){ try{ const s=JSON.parse(lsGet("ru_session")||"null"); return s&&s.u&&s.token?s:null; }catch(e){ return null; } }
 function setSess(s){ lsSet("ru_session", JSON.stringify(s)); }
 function touch(){ const s=getSess(); if(s && me){ const now=Date.now(); if(now-(s.t||0)>30000){ s.t=now; setSess(s); } } }
 document.addEventListener("pointerdown", touch, true);
 document.addEventListener("keydown", touch, true);
 setInterval(()=>{ const s=getSess(); if(s && me && Date.now()-(s.t||0)>IDLE_MS) logout("idle"); }, 60000);
-function applyName(name){
-  name = String(name||"").trim().replace(/\s+/g," ");
-  lockedName = !!name;
-  if(name){ const parts=name.split(" "); $("fn").value=parts[0]||""; $("ln").value=parts.slice(1).join(" "); lsSet("bis_shell_name", JSON.stringify({f:$("fn").value,l:$("ln").value})); }
-  $("chgName").style.display = lockedName ? "none" : "";
-}
 function guard(){ const s=getSess(); if(!s) return; callCheck(s).then(r=>{ if(r && !r.ok && (r.err==="other"||r.err==="inactive"||r.err==="wrong")) logout(r.err==="other"?"other":r.err); }).catch(()=>{}); }
 function enterHome(){
   document.querySelectorAll(".who").forEach(e=>e.textContent = me.login);
-  applyName(me.name);
-  if(lockedName){ goHome(); return; }
   show("sName");
   $("fn").focus();
 }
@@ -292,9 +283,8 @@ function goHome(){
 }
 function logout(why){
   try{ speechSynthesis.cancel(); }catch(e){}
-  $("frameBox").innerHTML = ""; me = null; lockedName = false;
-  try{ localStorage.removeItem("ru_session"); localStorage.removeItem("bis_shell_name"); }catch(e){}
-  $("fn").value=""; $("ln").value="";
+  $("frameBox").innerHTML = ""; me = null;
+  try{ localStorage.removeItem("ru_session"); }catch(e){}
   $("pw").value=""; setErr("lerr", (why==="other"||why==="idle"||why==="inactive")?why:null); if($("pw").type==="text") $("eye").click();
   show("sLogin");
 }
@@ -318,7 +308,7 @@ function flushQueue(){
   qGet().forEach(rec=>{
     fetch(LOGIN_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(rec)})
       .then(r=>r.json()).then(j=>{
-        if(j && (j.ok || j.err==="other" || j.err==="inactive" || j.err==="wrong" || j.err==="bad")) qSet(qGet().filter(x=>x.id!==rec.id));
+        if(j && (j.ok || j.err==="other" || j.err==="inactive" || j.err==="wrong" || j.err==="bad" || j.err==="name")) qSet(qGet().filter(x=>x.id!==rec.id));
         if(j && !j.ok && (j.err==="other"||j.err==="inactive")){ const s=getSess(); if(s && s.u===rec.u && s.token===rec.token) logout(j.err); }
       },()=>{});
   });
@@ -391,18 +381,9 @@ $("nameForm").addEventListener("submit", ev=>{
   if(f.length<2||l.length<2){ setErr("er","nameErr"); (f.length<2?$("fn"):$("ln")).focus(); return; }
   setErr("er",null);
   lsSet("bis_shell_name", JSON.stringify({f:f,l:l}));
-  const sess=getSess();
-  if(!sess || !LOGIN_URL){ goHome(); return; }
-  const btn=$("nameForm").querySelector("button[type=submit],button:not([type])"); if(btn) btn.disabled=true;
-  fetch(LOGIN_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({a:"setName",u:sess.u,token:sess.token,name:f+" "+l})})
-    .then(r=>r.json()).then(r=>{
-      if(btn) btn.disabled=false;
-      if(r && (r.ok || r.err==="named")){ applyName(r.name); goHome(); return; }
-      if(r && (r.err==="other"||r.err==="inactive")){ logout(r.err); return; }
-      goHome();
-    },()=>{ if(btn) btn.disabled=false; goHome(); });
+  goHome();
 });
-$("chgName").onclick = ()=>{ if(lockedName) return; show("sName"); $("fn").focus(); };
+$("chgName").onclick = ()=>{ show("sName"); $("fn").focus(); };
 $("backBtn").onclick = ()=>{
   const to = $("backBtn").dataset.to;
   closeApp();
@@ -437,9 +418,7 @@ $("loginForm").addEventListener("submit", async ev=>{
   try{
     const r = await callLogin(u,p);
     if(r && r.ok && r.token){
-      me = {login:u, name:r.name||""};
-      try{ localStorage.removeItem("bis_shell_name"); }catch(e){}
-      $("fn").value=""; $("ln").value="";
+      me = {login:u, name:""};
       setSess({u:u, token:r.token, t:Date.now()});
       $("pw").value = ""; enterHome();
     } else setErr("lerr", (r&&r.err&&I18N.uz[r.err])?r.err:"wrong");
@@ -458,9 +437,10 @@ applyLang();
   if(Date.now()-(sess.t||0) > IDLE_MS){ logout("idle"); return; }
   try{
     const r = await callCheck(sess);
-    if(r && r.ok){ me = {login:sess.u, name:r.name||""}; sess.t=Date.now(); setSess(sess); enterHome(); }
+    if(r && r.ok){ me = {login:sess.u, name:""}; sess.t=Date.now(); setSess(sess);
+      if($("fn").value.trim().length>=2 && $("ln").value.trim().length>=2) goHome(); else enterHome(); }
     else logout(r && r.err==="other" ? "other" : (r && r.err==="inactive" ? "inactive" : null));
-  }catch(e){ me = {login:sess.u, name:""}; enterHome(); }
+  }catch(e){ me = {login:sess.u, name:""}; if($("fn").value.trim().length>=2 && $("ln").value.trim().length>=2) goHome(); else enterHome(); }
 })();
 </script>
 </body>
